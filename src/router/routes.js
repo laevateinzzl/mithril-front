@@ -1,16 +1,17 @@
-const routes = [{
-    path: '/',
-    component: () => import('pages/Index.vue'),
+const routes = [
+  {
+    path: "/",
+    component: () => import("pages/Index.vue"),
     meta: {
-      isLogin: false,
-    },
+      isLogin: false
+    }
   },
 
   // Always leave this as last one,
   // but you can also remove it
   {
-    path: '*',
-    component: () => import('pages/Error404.vue')
+    path: "*",
+    component: () => import("pages/Error404.vue")
   },
   {
     path: "/about",
@@ -19,7 +20,7 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../pages/About.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/About.vue")
   },
   {
     path: "/login",
@@ -28,7 +29,7 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../pages/Login.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/Login.vue")
   },
   {
     path: "/register",
@@ -37,7 +38,7 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../pages/Register.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/Register.vue")
   },
   {
     path: "/userinfo",
@@ -46,10 +47,10 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../pages/UserInfo.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/UserInfo.vue"),
     meta: {
-      isLogin: true,
-    },
+      isLogin: true
+    }
   },
   {
     path: "/postvideo",
@@ -58,32 +59,31 @@ const routes = [{
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../pages/PostVideo.vue"),
+      import(/* webpackChunkName: "about" */ "../pages/PostVideo.vue"),
     meta: {
-      isLogin: true,
-    },
+      isLogin: true
+    }
   },
   {
     path: "/video/:videoID",
     name: "showvideo",
     component: () =>
-      import( /* webpackChunkName: "video" */ "../pages/ShowVideo.vue"),
+      import(/* webpackChunkName: "video" */ "../pages/ShowVideo.vue")
   },
   {
     path: "/rank",
     name: "rank",
-    component: () =>
-      import( /* webpackChunkName: "video" */ "../pages/Rank.vue"),
+    component: () => import(/* webpackChunkName: "video" */ "../pages/Rank.vue")
   },
   {
-    path: "/video/:videoID",
+    path: "/video/edit/:videoID",
     name: "updatevideo",
     component: () =>
-      import( /* webpackChunkName: "video" */ "../pages/UpdateVideo.vue"),
+      import(/* webpackChunkName: "video" */ "../pages/UpdateVideo.vue"),
     meta: {
-      isLogin: true,
-    },
-  },
-]
+      isLogin: true
+    }
+  }
+];
 
-export default routes
+export default routes;
