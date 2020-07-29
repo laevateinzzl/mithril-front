@@ -48,7 +48,7 @@ export default {
           oReq.send(this.file);
           oReq.onload = () => {
             this.url = res.data.get;
-            this.form.avatar = res.data.key;
+            this.avatar = res.data.key;
           };
         })
         .catch((error) => {

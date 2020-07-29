@@ -1,10 +1,8 @@
 <template>
-  <div class="column justify-center items-center ">
+  <div class="column justify-center items-center">
     <q-card class="register">
       <q-toolbar class="bg-cyan text-white">
-        <q-toolbar-title class="column justify-center items-center ">
-          视频投稿
-        </q-toolbar-title>
+        <q-toolbar-title class="column justify-center items-center">视频投稿</q-toolbar-title>
       </q-toolbar>
       <q-form @submit="submit" class="q-gutter-md">
         <q-input filled v-model="form.title" label="标题" />
@@ -15,7 +13,7 @@
           <input type="file" @change="fnUploadRequest" ref="inputer" />
           <label for="id"></label>
         </div>
-        <q-card-actions class="column justify-end items-end ">
+        <q-card-actions class="column justify-end items-end">
           <q-btn label="投稿" type="submit" color="primary" />
         </q-card-actions>
       </q-form>
@@ -33,8 +31,8 @@ export default {
         title: "",
         info: "",
         url: "",
-        avatar: ""
-      }
+        avatar: "",
+      },
     };
   },
 
@@ -43,50 +41,50 @@ export default {
       let inputDOM = this.$refs.inputer;
       this.file = inputDOM.files[0];
       uploadAPI(this.file.name)
-        .then(res => {
+        .then((res) => {
           const oReq = new XMLHttpRequest();
           oReq.open("PUT", res.data.put, true);
           oReq.send(this.file);
           oReq.onload = () => {
-            this.url = res.data.get;
+            this.form.url = res.data.get;
             this.form.avatar = res.data.key;
           };
         })
-        .catch(error => {
+        .catch((error) => {
           this.$q.notify({
             title: "网路错误，或者服务器宕机",
-            message: error
+            message: error,
           });
         });
     },
 
     submit() {
       API.postVideo(this.form)
-        .then(res => {
+        .then((res) => {
           if (res.code > 0) {
             this.$q.notify({
               title: "投稿失败",
               titleIcon: "error",
-              message: res.msg
+              message: res.msg,
             });
           } else {
             this.$q.notify({
               title: "投稿成功",
               message: `您投稿的ID为${res.data.id}`,
-              type: "success"
+              type: "success",
             });
             this.$router.push({ path: "/" });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           this.$q.notify({
             title: "网路错误，或者服务器宕机",
             titleIcon: "error",
-            message: error
+            message: error,
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -97,5 +95,5 @@ export default {
   margin-top: 50px
 
 .upload
-    margin-left: 115px
+  margin-left: 115px
 </style>
